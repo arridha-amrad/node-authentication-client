@@ -1,10 +1,10 @@
-import { AuthActionsType } from "../types/AuthTypes";
+import { AuthActionsType } from '../reduxTypes/AuthTypes';
 
 export interface AuthenticatedUserData {
   id: string;
   email: string;
   username: string;
-  fullName: string;
+  fullName?: string;
   avatarURL: string;
 }
 
@@ -25,32 +25,28 @@ export default function AuthReducer(
   action: AuthActionsType
 ): AuthState {
   switch (action.type) {
-    case "STOP_LOADING_AUTH":
+    case 'STOP_LOADING_AUTH':
       return {
         ...state,
         isLoadingAuth: false,
       };
-    case "LOADING_AUTH":
+    case 'LOADING_AUTH':
       return {
         ...state,
         isLoadingAuth: true,
       };
-    case "SET_AUTHENTICATED":
+    case 'SET_AUTHENTICATED':
       return {
         ...state,
         isAuthenticated: true,
+        authenticatedUser: action.payload,
       };
-    case "SET_UNAUTHENTICATED":
+    case 'SET_UNAUTHENTICATED':
       return {
         ...state,
         isAuthenticated: false,
+        authenticatedUser: null,
       };
-    case "AUTHENTICATED_USER_DATA":
-      return {
-        ...state,
-        authenticatedUser: action.payload,
-      };
-    case "RESET_AUTH_USER":
     default:
       return state;
   }
