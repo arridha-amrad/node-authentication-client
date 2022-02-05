@@ -23,10 +23,12 @@ const App = () => {
       await axiosInstance.get('/api/auth/refresh-token');
       const { data } = await axiosInstance.get('/api/user/me');
       if (isMounted) {
-        dispatch({
-          type: 'SET_AUTHENTICATED',
-          payload: data.user,
-        });
+        if (data.user) {
+          dispatch({
+            type: 'SET_AUTHENTICATED',
+            payload: data.user,
+          });
+        }
       }
     } catch (err) {
       console.log(err);
