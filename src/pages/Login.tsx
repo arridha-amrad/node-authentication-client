@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import MyAlert from '../boostrapComponents/MyAlert';
 import MyButton from '../boostrapComponents/MyButton';
 import TextInput from '../boostrapComponents/TextInput';
+import GoogleLoginButton from '../components/GoogleLoginButton';
 import { RootState } from '../reduxStore';
 import { AuthActionsType } from '../reduxStore/reduxTypes/AuthTypes';
 import axiosInstance from '../utils/AxiosInterceptor';
@@ -95,7 +96,12 @@ const Login = () => {
           />
         </Form>
         <Link to="/register">register</Link>
-        <Link to="/forgot-password">forgot password</Link>
+        <Link className="ms-3" to="/forgot-password">
+          forgot password
+        </Link>
+        <div className="mt-2">
+          <GoogleLoginButton />
+        </div>
       </div>
     </Container>
   );

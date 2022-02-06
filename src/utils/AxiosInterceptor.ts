@@ -23,7 +23,7 @@ axiosInstance.interceptors.response.use(
     return response;
   },
   async (error: any) => {
-    if (error.response.status === 401) {
+    if (error && error.response.status === 401) {
       return axiosInstance
         .get('/api/auth/refresh-token')
         .then(() => {
