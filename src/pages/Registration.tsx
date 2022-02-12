@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { Container } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import MyAlert, { AlertVariant } from '../boostrapComponents/MyAlert';
-import EmailVerificationForm from '../components/EmailVerificationForm';
 import RegistrationForm from '../components/RegistrationForm';
 import { RootState } from '../reduxStore';
 
@@ -12,7 +11,6 @@ export interface MessageProps {
 }
 
 const Register = () => {
-  const [step, setStep] = useState(0);
   const [message, setMessage] = useState<MessageProps>({
     body: '',
     type: 'success',
@@ -32,20 +30,11 @@ const Register = () => {
             onClose={() => setIsAlertOpen(false)}
           />
         )}
-        {step === 0 ? (
-          <RegistrationForm
-            reEnableAlert={() => setIsAlertOpen(true)}
-            isLoading={isLoadingAuth}
-            setMessage={setMessage}
-            increaseStep={() => setStep((prev) => prev + 1)}
-          />
-        ) : (
-          <EmailVerificationForm
-            reEnableAlert={() => setIsAlertOpen(true)}
-            setMessage={setMessage}
-            isLoading={isLoadingAuth}
-          />
-        )}
+        <RegistrationForm
+          reEnableAlert={() => setIsAlertOpen(true)}
+          isLoading={isLoadingAuth}
+          setMessage={setMessage}
+        />
       </div>
     </Container>
   );

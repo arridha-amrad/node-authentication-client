@@ -1,6 +1,8 @@
+import getGoogleOauthURL from '../utils/GetGoogleOAuthURL';
+
 const GoogleLoginButton = () => {
   const googleLogin = () => {
-    window.open('http://localhost:5000/api/google/oauth/login', '_self');
+    window.open(getGoogleOauthURL(), '_blank');
   };
 
   return (

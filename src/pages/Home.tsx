@@ -7,6 +7,7 @@ const Home = () => {
   const { authenticatedUser, isAuthenticated } = useSelector(
     (state: RootState) => state.auth
   );
+
   return (
     <Container>
       <div className="mt-5">

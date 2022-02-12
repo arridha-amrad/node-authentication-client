@@ -17,10 +17,10 @@ const App = () => {
   const [isMounted, setIsMounted] = useState(true);
   const dispatch = useDispatch<Dispatch<AuthActionsType>>();
   const [isLoading, setIsLoading] = useState(false);
+
   const fetchUser = async () => {
     try {
       setIsLoading(true);
-      await axiosInstance.get('/api/auth/refresh-token');
       const { data } = await axiosInstance.get('/api/user/me');
       if (isMounted) {
         if (data.user) {
@@ -30,10 +30,12 @@ const App = () => {
           });
         }
       }
-    } catch (err) {
-      console.log(err);
+    } catch (err: any) {
+      console.log('err : ', err);
     } finally {
-      setIsLoading(false);
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 500);
     }
   };
   useEffect(() => {

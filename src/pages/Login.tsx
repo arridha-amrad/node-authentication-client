@@ -55,7 +55,7 @@ const Login = () => {
   );
 
   useEffect(() => {
-    if (!isLoadingAuth && isAuthenticated) {
+    if (isAuthenticated) {
       navigate('/');
     }
   }, []);

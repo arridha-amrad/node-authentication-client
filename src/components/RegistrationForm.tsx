@@ -9,14 +9,12 @@ import axiosInstance from '../utils/AxiosInterceptor';
 import useForm from '../utils/UseForm';
 
 interface RegistrationFormProps {
-  increaseStep: () => void;
   reEnableAlert: () => void;
   setMessage: Dispatch<SetStateAction<MessageProps>>;
   isLoading: boolean;
 }
 
 const RegistrationForm: FC<RegistrationFormProps> = ({
-  increaseStep,
   setMessage,
   isLoading,
   reEnableAlert,
@@ -34,7 +32,6 @@ const RegistrationForm: FC<RegistrationFormProps> = ({
         type: 'success',
         body: data.message,
       });
-      increaseStep();
     } catch (err: any) {
       setMessage({
         type: 'danger',
@@ -63,7 +60,6 @@ const RegistrationForm: FC<RegistrationFormProps> = ({
         onChange={onChange}
         label="Email"
         name="email"
-        placeholder="Email"
         type="text"
       />
       <TextInput
@@ -71,7 +67,6 @@ const RegistrationForm: FC<RegistrationFormProps> = ({
         onChange={onChange}
         label="Username"
         name="username"
-        placeholder="Email"
         type="text"
       />
       <TextInput
@@ -79,7 +74,6 @@ const RegistrationForm: FC<RegistrationFormProps> = ({
         onChange={onChange}
         label="Password"
         name="password"
-        placeholder="Password"
         type="password"
       />
       <MyButton

@@ -4,7 +4,7 @@ import { Form } from 'react-bootstrap';
 interface TextInputProps {
   label: string;
   type: 'text' | 'password';
-  placeholder: string;
+  placeholder?: string;
   formText?: string;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
   name: string;

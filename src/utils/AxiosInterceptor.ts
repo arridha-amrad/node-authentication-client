@@ -23,15 +23,13 @@ axiosInstance.interceptors.response.use(
     return response;
   },
   async (error: any) => {
-    if (error && error.response.status === 401) {
+    if (error && error.response.data === 'token expired') {
       return axiosInstance
         .get('/api/auth/refresh-token')
         .then(() => {
-          console.log('cookie renewed');
           return axios(error.config);
         })
         .catch((err) => {
-          console.log('err from interceptor : ', err.response.data);
           return Promise.reject(err);
         });
     }

@@ -14,18 +14,13 @@ const Logout = () => {
 
   const handleLogout = async () => {
     try {
-      dispatch({ type: 'LOADING_AUTH' });
-      await axiosInstance.post('/api/auth/logout');
       dispatch({
         type: 'SET_UNAUTHENTICATED',
       });
+      await axiosInstance.post('/api/auth/logout');
       navigate('/login');
     } catch (err) {
       console.log(err);
-    } finally {
-      dispatch({
-        type: 'STOP_LOADING_AUTH',
-      });
     }
   };
   return (
