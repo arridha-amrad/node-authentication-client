@@ -9,6 +9,7 @@ import {
   ForgotPassword,
   Login,
   ResetPassword,
+  Test,
 } from './pages';
 import { AuthActionsType } from './reduxStore/reduxTypes/AuthTypes';
 import axiosInstance from './utils/AxiosInterceptor';
@@ -63,6 +64,7 @@ const App = () => {
       <Route element={<ProtectedRoutes />}>
         <Route path="/" element={<Home />} />
       </Route>
+      <Route path="/test" element={<Test />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Registration />} />
       <Route path="/forgot-password" element={<ForgotPassword />} />
